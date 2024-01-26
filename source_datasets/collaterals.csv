@@ -1,0 +1,6 @@
+client_id,type,value,ticker
+1, stock_asset ,5000 ,AAPL
+7, savings, 5000, 
+3, stock_asset, 4000, AMZN
+4, car, 3000, 
+5 ,stock_asset ,7000 ,GOOGL

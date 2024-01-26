@@ -1,0 +1,11 @@
+client_id,name,email,address,corporate_info,credit_score,financial_assessment,risk_assessment,defaulter_reporting
+1, Alice, alice@example.com, 123 Main Street, Amsterdam, ABC Inc., 750, good, low, no
+2, Bob, bob@example.com, 456 Park Avenue, Rotterdam, XYZ Ltd., 650, fair, medium, no
+3, Charlie, charlie@example.com, 789 Elm Road, Utrecht, PQR Co., 700, good, low, no
+4, David, david@example.com, 101 Maple Lane, Eindhoven, GHI Inc., 600, fair, medium, no
+5, Eve, eve@example.com, 234 Pine Street, Groningen, JKL Ltd., 550, poor, high, yes
+6, Frank, frank@example.com, 567 Oak Avenue, Maastricht, MNO Co., 800, excellent, low, no
+7, Grace, grace@example.com, 890 Birch Road, Haarlem, STU Inc., 700, good, low, no
+8, Harry, harry@example.com, 123 Cedar Lane, Leiden, VWX Ltd., 650, fair, medium, no
+9, Irene, irene@example.com, 456 Spruce Street, Arnhem, YZA Co., 600, fair, medium, no
+10, Jack, jack@example.com, 789 Willow Avenue, Nijmegen, BCD Inc., 500, poor, high, yes
