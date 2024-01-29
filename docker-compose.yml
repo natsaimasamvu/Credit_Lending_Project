@@ -12,11 +12,11 @@ services:
     networks:
     - virtual-local-network   
     deploy:
-     replicas: 2
+     replicas: 1
      restart_policy:
        condition: on-failure
     volumes:
-    - landing_zone:/opt/spark/work-dir/
+    - C:\Users\Natsai\Documents\Credit_Landing_Project\:/opt/spark/work-dir/
   pg_sql_dw:
     container_name: pg_sql_dw
     image: ctnatsai/postgresql:latest
@@ -77,17 +77,17 @@ services:
     networks:
       - virtual-local-network
     volumes:
-      - grafana:/var/lib/grafana
+      - C:\Users\Natsai\Documents\Credit_Landing_Project\grafana\:/var/lib/grafana
 
 volumes:
   pg_grafana:
     driver: local
-  grafana:
-    driver: local
   pg_sql_dw:
     driver: local
-  landing_zone:
-    driver: local
+  # grafana:
+  #   driver: local
+  # landing_zone:
+  #   driver: local
 
   # adminer:
   #   image: adminer:latest
