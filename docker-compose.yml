@@ -12,14 +12,14 @@ services:
     networks:
     - virtual-local-network   
     deploy:
-     replicas: 1
+     replicas: 2
      restart_policy:
        condition: on-failure
     volumes:
     - landing_zone:/opt/spark/work-dir/
   pg_sql_dw:
     container_name: pg_sql_dw
-    image: postgres:12-alpine
+    image: ctnatsai/postgresql:latest
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
@@ -34,7 +34,7 @@ services:
      restart_policy:
        condition: on-failure
   pgadmin:
-    image: dpage/pgadmin4:latest
+    image: ctnatsai/pgadmin:latest
     environment:
       PGADMIN_DEFAULT_EMAIL: user@domain.com
       PGADMIN_DEFAULT_PASSWORD: 5up3rS3cr3t!
@@ -47,7 +47,7 @@ services:
         condition: on-failure
   pg_grafana:
     container_name: pg_grafana
-    image: postgres:12-alpine
+    image: ctnatsai/postgresql:latest
     environment:
       POSTGRES_DB: grafana_logs_db
       POSTGRES_USER: grafana_user
@@ -60,7 +60,7 @@ services:
       - pg_grafana:/var/lib/postgresql/data
   grafana:
     container_name: grafana
-    image: grafana/grafana:latest
+    image: ctnatsai/grafana:latest
     user: "0:0"
     environment:
       GF_DATABASE_TYPE: postgres
