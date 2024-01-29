@@ -37,15 +37,15 @@ def bronze(config):
 def silver(datasets, config):
     #Client transform 
     clients_silver_df = (datasets[0]
-                         .withColumn(" email", sha1(col(" email")))
-                         .withColumn(" address", sha1(col(" address")))
-                         .withColumn(" financial_assessment", datasets[0][" financial_assessment"].cast("int"))
+                         .withColumn("email", sha1(col("email")))
+                         .withColumn("address", sha1(col("address")))
+                         .withColumn("financial_assessment", datasets[0]["financial_assessment"].cast("int"))
                         )
     #Collaterals transform
     collaterals_silver_df = (datasets[1]
-                             .withColumnRenamed(" ticker", "ticker")
-                             .withColumnRenamed(" type", "collateral_type")
-                             .withColumnRenamed(" value", "collateral_value")
+                             .withColumnRenamed("ticker", "ticker")
+                             .withColumnRenamed("type", "collateral_type")
+                             .withColumnRenamed("value", "collateral_value")
                             )
     
     collaterals_silver_df = (collaterals_silver_df                            
@@ -104,4 +104,3 @@ def pipeline_run():
     gold(silver_datasets, config)
     
 pipeline_run()
-    

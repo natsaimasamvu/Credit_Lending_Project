@@ -7,18 +7,18 @@
       "format": "csv",
       "header": "true",
       "inferSchema": "true",
-      "path": "/source_datasets/clients.csv"
+      "path": "/opt/spark/work-dir/source_datasets/clients.csv"
     },
     "collaterals": {
       "format": "csv",
       "header": "true",
       "inferSchema": "true",
-      "path": "/source_datasets/collaterals.csv"
+      "path": "/opt/spark/work-dir/source_datasets/collaterals.csv"
     },
     "stocks": {
       "format": "json",
       "multiline": "true",
-      "path": "/source_datasets/stocks.json"
+      "path": "/opt/spark/work-dir/source_datasets/stocks.json"
     }
   },
   "storage_layer": {

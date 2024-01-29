@@ -36,6 +36,7 @@ def write_data(spark, data_frame: 'DataFrame', file_path: str) -> None:
         .write
         .format("delta")
         .option("delta.columnMapping.mode", "name")
+        .option("overwriteSchema", "true")
         .mode("overwrite").save(file_path))
 
 def rename_columns(data_frame: 'DataFrame', old_column_names: list, new_column_names: list) -> 'DataFrame':
