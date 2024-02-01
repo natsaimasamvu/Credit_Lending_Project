@@ -56,7 +56,7 @@ TODO: Guide users through getting your code up and running on their own system. 
             - C:\Users\Natsai\Documents\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\:/var/lib/postgresql/data
         ``` 
     3. Replace each of the following file paths given for each service in the yml file, with the file path that maps directly to this file path on your pc. For example:
-         __<C:\Users\Natsai\Documents\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\>__ is replaced with __<C:\Users\User1\Downloads\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\>__ on a windows pc or __</Users/User3/Downloads/Credit_Landing_Project/app_data/postgresql_grafana_logs/_data/>__ on an iMac or Ubuntu.
+         __{C:\Users\Natsai\Documents\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\}__ is replaced with __{C:\Users\User1\Downloads\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\}__ on a windows pc or __{/Users/User3/Downloads/Credit_Landing_Project/app_data/postgresql_grafana_logs/_data/}__ on an iMac or Ubuntu.
          __NB:__ notice how the folder structure has changed as well as the names of the folders preceding the Credit_Landing_Project folder. 
 4. Deploy Docker Stack. To do this:
     1. From the Credit_Landing_Project folder, navigate to the delta_lake project folder.
