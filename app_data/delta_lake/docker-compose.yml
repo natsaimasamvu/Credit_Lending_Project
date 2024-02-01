@@ -4,6 +4,7 @@ networks:
   virtual-local-network:
 services:
   delta:
+    container_name: delta_lake
     image: deltaio/delta-docker:latest
     ports:
     - "8888:8888"
