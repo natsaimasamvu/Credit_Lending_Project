@@ -89,7 +89,9 @@ From a Jupyter Notebook landing page, open the terminal window. To run the pipel
       GRAFANA_DEFAULT_USERNAME: admin
       GRAFANA_DEFAULT_PASSWORD: admin
     ```
-4. Once the data is loaded, you can view the collateral status dashboard by using the following link from your browser: http://localhost:3111/dashboard/snapshot/L5QdIutJDFYfdNjamCs38lXhIBW6elLu. This dashboard shows the change in collateral value for 2 clients over a given 7 day period.
+4. Once the data is loaded, you can view the collateral status dashboard by using the following link from your browser: http://localhost:3111/dashboard/snapshot/L5QdIutJDFYfdNjamCs38lXhIBW6elLu. This dashboard shows the change in collateral value for 2 clients over a given 7 day period. The sample dashboard should look as follows:
+
+    ![Alt text](images/grafana_dashboard.png)
 
 ## Future work
 1. Extend the Helpers functions to include transformations typically used in data transformations e.g. __rename columns__, __filter columns__ and __join statements__.
