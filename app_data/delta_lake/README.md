@@ -56,13 +56,14 @@ TODO: Guide users through getting your code up and running on their own system. 
             - C:\Users\Natsai\Documents\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\:/var/lib/postgresql/data
         ``` 
     3. Replace each of the following file paths given for each service in the yml file, with the file path that maps directly to this file path on your pc. For example:
-         __{C:\Users\Natsai\Documents\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\}__ is replaced with __{C:\Users\User1\Downloads\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\}__ on a windows pc or __{/Users/User3/Downloads/Credit_Landing_Project/app_data/postgresql_grafana_logs/_data/}__ on an iMac or Ubuntu.
+         **<C:\Users\Natsai\Documents\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\>** is replaced with **<C:\Users\User1\Downloads\Credit_Landing_Project\app_data\postgresql_grafana_logs\_data\>** on a windows pc or **/Users/User3/Downloads/Credit_Landing_Project/app_data/postgresql_grafana_logs/_data/** on an iMac or Ubuntu.
          __NB:__ notice how the folder structure has changed as well as the names of the folders preceding the Credit_Landing_Project folder. 
 4. Deploy Docker Stack. To do this:
     1. From the Credit_Landing_Project folder, navigate to the delta_lake project folder.
     2. From this folder, open __CMD__ or __Terminal__ depending on the OS you are using.
     3. Run the following command **"docker-compose up"**
-    4. This should deploy all your control plane resources. __NB:__ You can confirm this by checking the Docker Desktop up under the Containers tab.  
+    4. This should deploy all your control plane resources.
+       __NB:__ You can confirm this by checking the Docker Desktop up under the Containers tab.  
 5. Once the apps are all up and running, you can now open the Jupyter Notebooks UI. To do this:  
     1. Navigate to the Containers tab in docker desktop
     2. Click on the link of the container named "delta_lake". You will see logs.
