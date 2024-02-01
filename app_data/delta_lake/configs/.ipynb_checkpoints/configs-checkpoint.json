@@ -1,0 +1,47 @@
+{
+  "spark_conf": {
+    "spark.driver.extraClassPath": "/opt/spark/work-dir/postgresql-42.7.0.jar"
+  },
+  "data_sources": {
+    "clients": {
+      "format": "csv",
+      "header": "true",
+      "inferSchema": "true",
+      "path": "/opt/spark/work-dir/source_datasets/clients.csv"
+    },
+    "collaterals": {
+      "format": "csv",
+      "header": "true",
+      "inferSchema": "true",
+      "path": "/opt/spark/work-dir/source_datasets/collaterals.csv"
+    },
+    "stocks": {
+      "format": "json",
+      "multiline": "true",
+      "path": "/opt/spark/work-dir/source_datasets/stocks.json"
+    }
+  },
+  "storage_layer": {
+    "bronze": {
+      "clients": "/opt/spark/work-dir/out/bronze/clients/",
+      "collaterals": "/opt/spark/work-dir/out/bronze/collaterals/",
+      "stocks": "/opt/spark/work-dir/out/bronze/stocks/"
+    },
+    "silver": {
+      "clients": "/opt/spark/work-dir/out/silver/clients/",
+      "collaterals": "/opt/spark/work-dir/out/silver/collaterals/",
+      "stocks": "/opt/spark/work-dir/out/silver/stocks/"
+    },
+    "gold": {
+      "collateral_status": "/opt/spark/work-dir/out/gold/collateral_status/"
+    }
+  },
+  "jdbc": {
+    "format": "jdbc",
+    "url": "jdbc:postgresql://pg_sql_dw:5432/credit_landing",
+    "user": "postgres",
+    "password": "password",
+    "dbtable": "collateral_value",
+    "mode": "overwrite"
+  }
+}
