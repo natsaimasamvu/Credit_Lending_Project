@@ -95,77 +95,82 @@ From a Jupyter Notebook landing page, open the terminal window. To run the pipel
     ![Alt text](images/grafana_dashboard.png)
 
 ## Future work
-1. Make the demo one-command and OS-agnostic
 
-Replace hard-coded Windows file paths in docker-compose.yml with relative paths + env vars and provide a simple entrypoint (make demo / run_demo.sh).
+### 1. **One-Command Demo Setup**
+- Replace absolute host paths with relative paths or environment variables in `docker-compose.yml`.
+- Provide scripts like `make demo`, `run_demo.sh`, or `run.ps1` to automate deployments.
+- **Goal:** `git clone` → `docker compose up` → open dashboard.
 
-Goal: git clone → docker compose up → open dashboard. No manual YAML edits.
+---
 
-2. Introduce proper configuration & secrets management
+### 2. **Configuration & Secrets Management**
+- Move credentials and host paths into a `.env` file or OS environment variables.
+- Never hard-code usernames, passwords, or local absolute paths in code.
+- Clearly label demo credentials and document how real credentials would be secured in production.
 
-Move all credentials (PgAdmin, Grafana) and host paths into a .env file or environment variables.
+---
 
-Clearly mark them as demo-only, and document what you’d do differently in real deployments.
+### 3. **Config-Driven Pipelines & Helper Modules**
+- Implement a Helpers module for reusable Spark transformations:
+  - rename columns
+  - filter/select statements
+  - join operations
+- Store transformation rules in YAML/JSON config files rather than inline logic.
 
-3. Modularise the pipeline with a Helpers module + config-driven transforms
+---
 
-Implement the planned Helpers module and use it from bronze/silver/gold layers.
+### 4. **Automated Testing (PyTest + Chispa)**
+- Add unit tests for helper functions and core logic using **PyTest**.
+- Add DataFrame equality tests for bronze → silver → gold transformations using **Chispa**.
+- Integrate testing into CI (e.g., GitHub Actions) to run on every push.
 
-Drive renames, filters, joins from a YAML/JSON config, not hard-coded logic inside Data_Pipeline.py.
+---
 
-4. Add tests for business logic & Spark transforms
+### 5. **Data Quality & Validation Layers**
+- Validate schemas on ingestion to bronze.
+- Add checks for nulls, duplicates, or unexpected values before promoting to silver/gold.
+- Log row counts and rejected records to surface data quality issues.
 
-Use Pytest for pure Python helpers and Chispa for DataFrame equality tests on silver/gold outputs.
+---
 
-Wire this into CI (e.g. GitHub Actions) so every push runs tests automatically.
+### 6. **Logging, Error Handling & Observability**
+- Use structured logging instead of `print()`.
+- Add exception handling around file reads, JDBC connections, and writes.
+- Log pipeline stages, metrics, and failures clearly.
 
-5. Build in data validation & quality checks per layer
+---
 
-Validate schemas and key columns at bronze ingest.
+### 7. **Production-Readiness Documentation**
+- Extend the README with guidance on:
+  - security (IAM, secrets management),
+  - deployment on cloud platforms,
+  - scaling for large datasets,
+  - data governance.
+- Explain how the architecture would evolve for enterprise environments.
 
-Add checks for nulls, ranges, duplicates before promoting to silver/gold.
+---
 
-Log row counts and rejected records so issues are visible.
+### 8. **Grafana Dashboard as Code**
+- Export the Grafana dashboard JSON and store it in version control.
+- Provide import instructions or automate loading as part of deployment.
+- Ensures dashboards are reproducible and versioned.
 
-6. Improve logging, error handling & observability
+---
 
-Replace print-style debugging with structured logging (stage start/end, row counts, timings).
+### 9. **Coding Standards & Maintainability**
+- Add type hints and docstrings to core pipeline functions.
+- Apply a linter/formatter (Black, Ruff, flake8) for consistent coding style.
+- Improve readability and maintainability as the project scales.
 
-Add basic error handling around file I/O and JDBC writes, with clear messages for operators.
+---
 
-7. Clean up and extend architecture & production-readiness docs
+### 10. **Multi-Environment Support**
+- Introduce configuration profiles such as `dev`, `demo`, and `prod`.
+- Use separate configs for database endpoints, credentials, and datasets.
+- Enables flexibility and portability across different execution contexts.
 
-Keep the existing control/data plane diagrams, but add a section on:
+---
 
-How this would scale,
-
-How it would run in the cloud,
-
-How security (IAM, secrets, network) would look in a real bank.
-
-8. Treat Grafana as dashboard-as-code
-
-Export the Grafana dashboard JSON and commit it to the repo.
-
-Provide an import script or clear instructions so the dashboard can be recreated automatically with the stack.
-
-9. Apply coding standards: types, docstrings, style
-
-Add type hints and docstrings to key functions (e.g. collateral calculations, pipeline steps).
-
-Apply a linter/formatter (Black, isort, flake8) and document it for contributors.
-
-10. Formalise multi-environment support
-
-Introduce simple profiles (dev/demo/prod) via config:
-
-different DBs/endpoints,
-
-different data volumes / sampling,
-
-toggles for features.
-
-This sets the stage for deploying the same design in more than one context.
 
 ## References
 
