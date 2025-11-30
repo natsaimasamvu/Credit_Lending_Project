@@ -95,9 +95,77 @@ From a Jupyter Notebook landing page, open the terminal window. To run the pipel
     ![Alt text](images/grafana_dashboard.png)
 
 ## Future work
-1. Extend the Helpers functions to include transformations typically used in data transformations e.g. __rename columns__, __filter columns__ and __join statements__.
-2. Extend the __silver__ and __gold__ functions in Data_Pipelines.py to make use of the Helpers module which will include transformations that take in a dataframe and a config file as parameters.
-3. Implement testing using __Pytest__ and __Chispa__
+1. Make the demo one-command and OS-agnostic
+
+Replace hard-coded Windows file paths in docker-compose.yml with relative paths + env vars and provide a simple entrypoint (make demo / run_demo.sh).
+
+Goal: git clone → docker compose up → open dashboard. No manual YAML edits.
+
+2. Introduce proper configuration & secrets management
+
+Move all credentials (PgAdmin, Grafana) and host paths into a .env file or environment variables.
+
+Clearly mark them as demo-only, and document what you’d do differently in real deployments.
+
+3. Modularise the pipeline with a Helpers module + config-driven transforms
+
+Implement the planned Helpers module and use it from bronze/silver/gold layers.
+
+Drive renames, filters, joins from a YAML/JSON config, not hard-coded logic inside Data_Pipeline.py.
+
+4. Add tests for business logic & Spark transforms
+
+Use Pytest for pure Python helpers and Chispa for DataFrame equality tests on silver/gold outputs.
+
+Wire this into CI (e.g. GitHub Actions) so every push runs tests automatically.
+
+5. Build in data validation & quality checks per layer
+
+Validate schemas and key columns at bronze ingest.
+
+Add checks for nulls, ranges, duplicates before promoting to silver/gold.
+
+Log row counts and rejected records so issues are visible.
+
+6. Improve logging, error handling & observability
+
+Replace print-style debugging with structured logging (stage start/end, row counts, timings).
+
+Add basic error handling around file I/O and JDBC writes, with clear messages for operators.
+
+7. Clean up and extend architecture & production-readiness docs
+
+Keep the existing control/data plane diagrams, but add a section on:
+
+How this would scale,
+
+How it would run in the cloud,
+
+How security (IAM, secrets, network) would look in a real bank.
+
+8. Treat Grafana as dashboard-as-code
+
+Export the Grafana dashboard JSON and commit it to the repo.
+
+Provide an import script or clear instructions so the dashboard can be recreated automatically with the stack.
+
+9. Apply coding standards: types, docstrings, style
+
+Add type hints and docstrings to key functions (e.g. collateral calculations, pipeline steps).
+
+Apply a linter/formatter (Black, isort, flake8) and document it for contributors.
+
+10. Formalise multi-environment support
+
+Introduce simple profiles (dev/demo/prod) via config:
+
+different DBs/endpoints,
+
+different data volumes / sampling,
+
+toggles for features.
+
+This sets the stage for deploying the same design in more than one context.
 
 ## References
 
