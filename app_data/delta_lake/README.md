@@ -105,7 +105,6 @@ From a Jupyter Notebook landing page, open the terminal window. To run the pipel
 
 ### 2. **Configuration & Secrets Management**
 - Move credentials and host paths into a `.env` file or OS environment variables.
-- Never hard-code usernames, passwords, or local absolute paths in code.
 - Clearly label demo credentials and document how real credentials would be secured in production.
 
 ---
@@ -146,14 +145,14 @@ From a Jupyter Notebook landing page, open the terminal window. To run the pipel
   - deployment on cloud platforms,
   - scaling for large datasets,
   - data governance.
-- Explain how the architecture would evolve for enterprise environments.
+- Explain how the architecture evolves for enterprise environments.
 
 ---
 
 ### 8. **Grafana Dashboard as Code**
 - Export the Grafana dashboard JSON and store it in version control.
 - Provide import instructions or automate loading as part of deployment.
-- Ensures dashboards are reproducible and versioned.
+- EnsureS dashboards are reproducible and versioned.
 
 ---
 
